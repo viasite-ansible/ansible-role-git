@@ -5,10 +5,13 @@ git_gitignore:
   - ".idea"
 
 git_config_alias:
+  b: branch
   co: checkout
   c: commit
-  cm: "commit -m"
+  cm: "commit -m" # commit message
   d: diff
+  r: reset
+  rf: "checkout --" # reset file
   s: status
 
 git_config_color:
