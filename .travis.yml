@@ -8,6 +8,8 @@ services:
 
 install: pip install molecule docker-py
 script:
+  - export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLECULE_APTPROXY_PATH"
+
   - export MOLECULE_GIT_USER=root
   - molecule --debug test --destroy=never
 
