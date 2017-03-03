@@ -1,0 +1,27 @@
+---
+- name: Install git
+  apt:
+    name: git
+    state: present
+  tags: [ git, install ]
+
+- name: Configure /etc/gitconfig
+  template:
+    src: gitconfig.j2
+    dest: "/etc/gitconfig"
+  tags: [ git, configure ]
+  when: git_user == 'system'
+
+- name: Configure ~/.gitconfig
+  template:
+    src: gitconfig.j2
+    dest: "~{{ git_user }}/.gitconfig"
+  tags: [ git, configure ]
+  when: git_user != 'system'
+
+- name: Configure ~/.gitignore
+  template:
+    src: gitignore.j2
+    dest: "~{{ git_user }}/.gitignore"
+  tags: [ git, configure ]
+  when: git_user != 'system'

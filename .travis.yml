@@ -1,0 +1,20 @@
+---
+
+language: python
+python: "2.7"
+sudo: required
+services:
+  - docker
+
+install: pip install molecule docker-py
+script:
+  - export MOLECULE_GIT_USER=root
+  - molecule --debug test --destroy=never
+
+  - export MOLECULE_GIT_USER=system
+  - molecule --debug converge
+  - molecule idempotence
+  - molecule destroy
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

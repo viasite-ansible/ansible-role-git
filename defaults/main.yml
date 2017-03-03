@@ -1,0 +1,30 @@
+---
+git_user: "{{ ansible_user_id }}" # or 'system'
+
+git_gitignore:
+  - ".idea"
+
+git_config_alias:
+  co: checkout
+  c: commit
+  cm: "commit -m"
+  d: diff
+  s: status
+
+git_config_color:
+  ui: auto
+
+git_config_core:
+  autocrlf: input
+  excludesfile: "~/.gitignore"
+
+git_config_diff:
+
+git_config_user:
+#  name:
+#  email:
+
+git_config_other:
+#  github:
+#    user:
+#    email:
