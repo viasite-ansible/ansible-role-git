@@ -1,20 +1,23 @@
 ---
-
 language: python
 python: "2.7"
 sudo: required
 services:
   - docker
 
-install: pip install molecule docker-py
-script:
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+install:
+  - pip install molecule docker
+before_script:
   - export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLECULE_APTPROXY_PATH"
-
+script:
   - export MOLECULE_GIT_USER=root
-  - molecule --debug test --destroy=never
+  - molecule test --destroy=never
 
   - export MOLECULE_GIT_USER=system
-  - molecule --debug converge
+  - molecule converge
   - molecule idempotence
   - molecule destroy
 

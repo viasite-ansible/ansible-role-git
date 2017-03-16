@@ -2,9 +2,9 @@
 test:
   script:
     - export MOLECULE_GIT_USER=root
-    - molecule --debug test --destroy=never
+    - molecule test --destroy=never
 
     - export MOLECULE_GIT_USER=system
-    - molecule --debug converge
+    - molecule converge
     - molecule idempotence
     - molecule destroy
