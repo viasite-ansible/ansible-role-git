@@ -6,12 +6,12 @@
 - configure user ~/.gitconfig
 - configure user ~/.gitignore
 
-
+Tested on Ubuntu and macOS.
 
 ## Examples:
 
 ### Configure system /etc/gitconfig
-
+Set `git_user: system` for write to `/etc/gitconfig`:
 ```
 hosts: all
 vars:
@@ -23,14 +23,15 @@ roles:
 ```
 
 
-### Configure user ~/.gitconfig
-Default `git_user` set to `ansible_user_id`.
-
+### Configure user ~/.gitconfig and ~/.gitignore
+Default `git_user` set to `ansible_user_id`:
 ```
 hosts: all
 vars:
   git_config_color:
     ui: auto
+  git_gitignore:
+    - ".idea"
 roles:
   - git
 ```
