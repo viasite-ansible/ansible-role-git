@@ -11,6 +11,7 @@ git_config_alias:
   cm: "commit -m" # commit message
   d: diff
   r: reset
+  remote-url: '!echo "ssh://$(stat -c "%U" "$PWD")@$(basename "$PWD")$PWD"' # output url for clone current repo
   rf: "checkout --" # reset file
   s: status
 
