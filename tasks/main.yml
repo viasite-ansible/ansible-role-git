@@ -16,6 +16,8 @@
   template:
     src: gitconfig.j2
     dest: "~{{ git_user }}/.gitconfig"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
   tags: [ git, configure ]
   when: git_user != 'system'
 
@@ -23,5 +25,7 @@
   template:
     src: gitignore.j2
     dest: "~{{ git_user }}/.gitignore"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
   tags: [ git, configure ]
   when: git_user != 'system'
