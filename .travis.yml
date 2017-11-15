@@ -6,19 +6,13 @@ services:
   - docker
 
 before_install:
-  - sudo apt-get -qq update
+  - docker --version
 install:
   - pip install molecule docker
 before_script:
   - export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLECULE_APTPROXY_PATH"
 script:
-  - export MOLECULE_GIT_USER=root
-  - molecule test --destroy=never
-
-  - export MOLECULE_GIT_USER=system
-  - molecule converge
-  - molecule idempotence
-  - molecule destroy
+  - molecule test --all
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

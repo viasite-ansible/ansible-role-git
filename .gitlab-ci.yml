@@ -1,10 +1,4 @@
 ---
 test:
   script:
-    - export MOLECULE_GIT_USER=root
-    - molecule test --destroy=never
-
-    - export MOLECULE_GIT_USER=system
-    - molecule converge
-    - molecule idempotence
-    - molecule destroy
+    - molecule test --all
